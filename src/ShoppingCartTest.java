@@ -3,11 +3,18 @@ import org.junit.jupiter.api.Test;
 
 class ShoppingCartTest {
 
+  private ShoppingCart cart;
+  private ShoppingItem item;
+
+  @BeforeEach
+  void setUp() {
+    cart = new ShoppingCart();
+    item = new ShoppingItem("Slime", 10.0);
+  }
+
   @Test
   void addItem_succeeds() {
     // Arrange
-    ShoppingCart cart = new ShoppingCart();
-    ShoppingItem item = new ShoppingItem("Slime", 10.0);
 
     // Act
     int result = cart.addItem(item);
@@ -18,30 +25,21 @@ class ShoppingCartTest {
 
   @Test
   void addAndRemoveItem_succeeds() {
-    ShoppingCart cart = new ShoppingCart();
-    ShoppingItem item = new ShoppingItem("Slime", 10.0);
-
     cart.addItem(item);
-    CartActionResult result = cart.removeItem(item);
+    int result = cart.removeItem(item);
 
-    Assertions.assertEquals(CartActionResult.SUCCESS, result);
+    Assertions.assertEquals(1, result);
   }
 
   @Test
   void removeNonExistingItem_fails() {
-    ShoppingCart cart = new ShoppingCart();
-    ShoppingItem item = new ShoppingItem("Slime", 10.0);
+    int result = cart.removeItem(item);
 
-    CartActionResult result = cart.removeItem(item);
-
-    Assertions.assertEquals(CartActionResult.FAIL, result);
+    Assertions.assertEquals(0, result);
   }
 
   @Test
   void addItem_numOfItemsIsOne() {
-    ShoppingCart cart = new ShoppingCart();
-    ShoppingItem item = new ShoppingItem("Slime", 10.0);
-
     cart.addItem(item);
     int numOfItems = cart.getNumOfItems();
 
@@ -50,9 +48,6 @@ class ShoppingCartTest {
 
   @Test
   void addAndRemoveItem_numOfItemsIsZero() {
-    ShoppingCart cart = new ShoppingCart();
-    ShoppingItem item = new ShoppingItem("Slime", 10.0);
-
     cart.addItem(item);
     cart.removeItem(item);
     int numOfItems = cart.getNumOfItems();
