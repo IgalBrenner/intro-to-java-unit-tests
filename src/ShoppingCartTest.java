@@ -18,22 +18,46 @@ class ShoppingCartTest {
 
   @Test
   void addAndRemoveItem_succeeds() {
-    // TODO write this test
+    ShoppingCart cart = new ShoppingCart();
+    ShoppingItem item = new ShoppingItem("Slime", 10.0);
+
+    cart.addItem(item);
+    CartActionResult result = cart.removeItem(item);
+
+    Assertions.assertEquals(CartActionResult.SUCCESS, result);
   }
 
   @Test
   void removeNonExistingItem_fails() {
-    // TODO write this test
+    ShoppingCart cart = new ShoppingCart();
+    ShoppingItem item = new ShoppingItem("Slime", 10.0);
+
+    CartActionResult result = cart.removeItem(item);
+
+    Assertions.assertEquals(CartActionResult.FAIL, result);
   }
 
   @Test
   void addItem_numOfItemsIsOne() {
-    // TODO write this test
+    ShoppingCart cart = new ShoppingCart();
+    ShoppingItem item = new ShoppingItem("Slime", 10.0);
+
+    cart.addItem(item);
+    int numOfItems = cart.getNumOfItems();
+
+    Assertions.assertEquals(1, numOfItems);
   }
 
   @Test
   void addAndRemoveItem_numOfItemsIsZero() {
-    // TODO write this test
+    ShoppingCart cart = new ShoppingCart();
+    ShoppingItem item = new ShoppingItem("Slime", 10.0);
+
+    cart.addItem(item);
+    cart.removeItem(item);
+    int numOfItems = cart.getNumOfItems();
+
+    Assertions.assertEquals(0, numOfItems);
   }
 
 }
