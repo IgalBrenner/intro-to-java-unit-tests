@@ -37,6 +37,7 @@ public class ShoppingCart {
         // Replace last item in cart with the one removed.
         shoppingItems[i] = shoppingItems[numOfItems - 1];
         shoppingItems[numOfItems - 1] = null;
+        numOfItems--;
         return 1;
       }
     }
