@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class ShoppingCartTest {
@@ -11,10 +10,10 @@ class ShoppingCartTest {
     ShoppingItem item = new ShoppingItem("Slime", 10.0);
 
     // Act
-    CartActionResult result = cart.addItem(item);
+    int result = cart.addItem(item);
 
     // Assert
-    Assertions.assertEquals(CartActionResult.SUCCESS, result);
+    Assertions.assertEquals(1, result);
   }
 
   @Test

@@ -19,29 +19,29 @@ public class ShoppingCart {
   /**
    * Add item to shopping cart.
    */
-  CartActionResult addItem(ShoppingItem item) {
+  int addItem(ShoppingItem item) {
     if (numOfItems < MAX_NUM_OF_ITEMS_IN_CART) {
       shoppingItems[numOfItems] = item;
       numOfItems++;
-      return CartActionResult.SUCCESS;
+      return 1;
     }
-    return CartActionResult.FAIL;
+    return 0;
   }
 
   /**
    * Remove item from shopping cart.
    */
-  CartActionResult removeItem(ShoppingItem item) {
+  int removeItem(ShoppingItem item) {
     for (int i = 0; i < numOfItems; i++) {
       if (shoppingItems[i] == item) {
         // Replace last item in cart with the one removed.
         shoppingItems[i] = shoppingItems[numOfItems - 1];
         shoppingItems[numOfItems - 1] = null;
-        return CartActionResult.SUCCESS;
+        return 1;
       }
     }
     // Item is not in the shopping cart
-    return CartActionResult.FAIL;
+    return 0;
   }
 
 }
